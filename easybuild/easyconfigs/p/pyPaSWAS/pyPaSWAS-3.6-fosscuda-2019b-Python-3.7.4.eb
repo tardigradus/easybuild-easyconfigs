@@ -1,0 +1,30 @@
+easyblock = 'Tarball'
+
+name = 'pyPaSWAS'
+version = '3.6'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/swarris/pyPaSWAS'
+description = """pyPaSWAS is a Python library for DNA/RNA/protein sequence
+alignment and trimming."""
+
+toolchain = {'name': 'fosscuda', 'version': '2019b'}
+
+source_urls = ['https://github.com/swarris/pyPaSWAS/archive/']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [('Python', '3.7.4'),
+                ('PyCUDA', '2019.1.2', versionsuffix),
+                ('Biopython', '1.75', versionsuffix),
+                ('SciPy-bundle', '2019.10', versionsuffix)]
+
+fix_python_shebang_for = ['pypaswas.py']
+
+sanity_check_paths = {
+    'files': ['pypaswas.py'],
+    'dirs': ['pyPaSWAS', 'scripts', 'data'],
+}
+
+modextrapaths = {'PATH': '', 'PYTHONPATH': ''}
+
+moduleclass = 'lib'
